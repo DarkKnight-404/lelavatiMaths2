@@ -701,7 +701,7 @@
             <h3>IIT-JEE Foundation</h3>
             <p>Master the concepts of Physics, Chemistry, and Mathematics for JEE with advanced problem-solving
               techniques.</p>
-            <a href="#" class="course-btn">Learn More</a>
+            <a href="#" class="course-btn" data-course="IIT-JEE Foundation">Learn More</a>
           </div>
         </div>
 
@@ -712,7 +712,7 @@
           <div class="course-content">
             <h3>NEET Foundation</h3>
             <p>Biology and Chemistry focused courses designed to build NEET-ready students from an early stage.</p>
-            <a href="#" class="course-btn">Learn More</a>
+            <a href="#" class="course-btn" data-course="NEET Foundation">Learn More</a>
           </div>
         </div>
 
@@ -723,7 +723,7 @@
           <div class="course-content">
             <h3>Homi Bhabha Exams</h3>
             <p>Guided preparation for Homi Bhabha competitions with lab practice and real exam simulations.</p>
-            <a href="#" class="course-btn">Learn More</a>
+            <a href="#" class="course-btn" data-course="Homi Bhabha Exams">Learn More</a>
           </div>
         </div>
 
@@ -734,7 +734,7 @@
           <div class="course-content">
             <h3>NTSE & Olympiads</h3>
             <p>Special training for NTSE & Olympiad exams with logical reasoning and advanced problem-solving.</p>
-            <a href="#" class="course-btn">Learn More</a>
+            <a href="#" class="course-btn" data-course="NTSE & Olympiads">Learn More</a>
           </div>
         </div>
       </div>
@@ -812,6 +812,19 @@
   </footer>
 
   <script>
+
+document.querySelectorAll('.course-btn').forEach(button => {
+  button.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (typeof gtag === 'function') {
+      gtag('event', 'course_click', {
+        course_name: this.dataset.course || 'Unknown'
+      });
+    }
+  });
+});
+
+
     // Create floating math symbols
     function createFloatingSymbols() {
       const container = document.getElementById('mathSymbols');
